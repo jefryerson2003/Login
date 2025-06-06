@@ -1,0 +1,170 @@
+@{
+    ViewData["Title"] = "Registro de Actividades";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container py-4">
+    <!-- Recuadro con iframe del formulario de Survey123 -->
+    <div class="mb-4 border rounded p-3 bg-light">
+        <h5 class="mb-3">Formulario de referencia (Survey123)</h5>
+        <iframe src="https://survey123.arcgis.com/share/8abea10c5ee8404f933abb1fe78a451f"
+                width="100%" height="600" frameborder="0" style="border:1px solid #ccc; border-radius: 8px;">
+        </iframe>
+    </div>
+
+    <style>.embed-container {position: relative; height: 0; padding-bottom:80%; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe name="survey123webform" width="500" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Vise Vuelo de Drones" src="//survey123.arcgis.com/share/8abea10c5ee8404f933abb1fe78a451f" allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com"></iframe></div><script>var survey123webform = document.getElementsByName('survey123webform')[0];window.addEventListener("message",e=>{if(e.data){var t=JSON.parse(e.data);["survey123:webform:formLoaded","survey123:onFormLoaded"].includes(t.event)&&t.contentHeight&&(survey123webform.parentNode.style.height=t.contentHeight+"px")&&(survey123webform.parentNode.style["padding-bottom"]="unset")}});</script>
+
+    <h2 class="mb-4">Registro de Actividades</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Fecha y Hora del Registro</label>
+            <input type="datetime-local" class="form-control" name="Fecha_y_Hora_del_Registro" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Funcionario quien realiza el Registro</label>
+            <select class="form-select" name="Funcionario_Responsable">
+                <option selected disabled>Seleccione...</option>
+                <option>Funcionario 1</option>
+                <option>Funcionario 2</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cargo</label>
+            <select class="form-select" name="Cargo">
+                <option selected disabled>Seleccione...</option>
+                <option>Cargo A</option>
+                <option>Cargo B</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de Actividad</label>
+            <select class="form-select" name="TipoActividad">
+                <option selected disabled>Seleccione...</option>
+                <option>Actividad 1</option>
+                <option>Actividad 2</option>
+            </select>
+        </div>
+
+        <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2">Ubicación Geográfica</legend>
+
+            <div class="mb-3">
+                <label class="form-label">Lugar de Vuelo</label>
+                <select class="form-select" name="LugarVuelo">
+                    <option>Ejemplo Lugar 1</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ubicación Geográfica</label>
+                <select class="form-select" name="themap">
+                    <option>Ejemplo Coordenada</option>
+                </select>
+            </div>
+
+            <!-- Contenedor del mapa -->
+            <div class="mb-3">
+                <label class="form-label">Selecciona la ubicación en el mapa</label>
+                <div id="map" style="height: 400px; width: 100%;"></div>
+            </div>
+
+            <!-- Input readonly para lat,lon -->
+            <div class="mb-3">
+                <label class="form-label">Ubicación (Lat, Lon)</label>
+                <input id="locationInput" class="form-control" name="Ubicacion" placeholder="lat,lon" readonly />
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" name="Pais" placeholder="País" />
+                <input class="form-control mt-2" name="Departamento" placeholder="Departamento" />
+                <input class="form-control mt-2" name="Municipio" placeholder="Municipio" />
+                <input class="form-control mt-2" name="Sede" placeholder="Sede" />
+            </div>
+        </fieldset>
+
+        <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2">Revista</legend>
+            <select class="form-select mb-3" name="TipoRevista">
+                <option>Tipo 1</option>
+            </select>
+            <input class="form-control mb-3" name="DescripcionRevista" placeholder="Descripción" />
+            <input class="form-control" type="file" name="ImagenRev" />
+        </fieldset>
+
+        <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2">Inspección</legend>
+            <select class="form-select mb-3" name="TipoInspeccion">
+                <option>Inspección 1</option>
+            </select>
+            <input class="form-control mb-3" name="DescripcionInspeccion" placeholder="Descripción" />
+            <select class="form-select mb-3" name="Novedad">
+                <option>Si</option><option>No</option>
+            </select>
+            <input class="form-control" type="file" name="ImagenIns" />
+        </fieldset>
+
+        <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2">Eventos de Riesgo</legend>
+            <select class="form-select mb-3" name="Escenario">
+                <option>Escenario 1</option>
+            </select>
+            <select class="form-select mb-3" name="Riesgo">
+                <option>Riesgo 1</option>
+            </select>
+            <label class="form-label">Factores de Riesgo Identificados</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="FactorRiesgo" value="Factor 1" />
+                <label class="form-check-label">Factor 1</label>
+            </div>
+            <input class="form-control mt-3" name="DescripcionRiesgo" placeholder="Descripción del Riesgo" />
+            <input class="form-control mt-3" type="file" name="RegistroFotografico" />
+        </fieldset>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-controller="Empleados" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    <!-- Validaciones de Razor -->
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const map = L.map('map').setView([4.6097, -74.0818], 6); // Bogotá por defecto
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            const marker = L.marker([4.6097, -74.0818], { draggable: true }).addTo(map);
+
+            // Actualizar input al mover el marcador
+            function updateInput(lat, lng) {
+                document.getElementById("locationInput").value = `${lat.toFixed(6)},${lng.toFixed(6)}`;
+            }
+
+            marker.on('dragend', function (e) {
+                const pos = marker.getLatLng();
+                updateInput(pos.lat, pos.lng);
+            });
+
+            // Reubicar marcador al hacer clic en el mapa
+            map.on('click', function (e) {
+                marker.setLatLng(e.latlng);
+                updateInput(e.latlng.lat, e.latlng.lng);
+            });
+
+            // Inicializar el input con la posición por defecto
+            updateInput(4.6097, -74.0818);
+        });
+    </script>
+}

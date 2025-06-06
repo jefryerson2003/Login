@@ -46,3 +46,18 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+  color: #343a40;
+  font-weight: 600;
+}

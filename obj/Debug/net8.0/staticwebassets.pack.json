@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Sneyd\\OneDrive - siggeoportales\\Trabajo\\AzureTest\\EmpleadosApp\\wwwroot\\images\\fondo-login.png",
+      "PackagePath": "staticwebassets\\images\\fondo-login.png"
+    },
+    {
+      "Id": "C:\\Users\\Sneyd\\OneDrive - siggeoportales\\Trabajo\\AzureTest\\EmpleadosApp\\wwwroot\\images\\login-backgroundSIG.png",
+      "PackagePath": "staticwebassets\\images\\login-backgroundSIG.png"
+    },
+    {
+      "Id": "C:\\Users\\Sneyd\\OneDrive - siggeoportales\\Trabajo\\AzureTest\\EmpleadosApp\\wwwroot\\images\\login-backgroundSIGIS.png",
+      "PackagePath": "staticwebassets\\images\\login-backgroundSIGIS.png"
+    },
+    {
       "Id": "C:\\Users\\Sneyd\\OneDrive - siggeoportales\\Trabajo\\AzureTest\\EmpleadosApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

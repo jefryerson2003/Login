@@ -12,6 +12,13 @@
   {
     <a class="btn btn-primary mb-3" asp-action="Create">Nuevo Empleado</a>
   }
+  @if (User.IsInRole("Coordinator"))
+{
+  <a class="btn btn-warning mb-3 me-2" asp-controller="Registro" asp-action="Formulario">
+    Registro de Actividades
+  </a>
+}
+
 
   <table class="table table-striped table-hover">
     <thead class="table-dark">
